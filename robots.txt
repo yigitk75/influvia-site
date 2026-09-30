@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://influvia.app/sitemap.xml
+Sitemap: https://yigitk75.github.io/influvia-site/sitemap.xml

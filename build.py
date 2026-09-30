@@ -2,7 +2,7 @@ import markdown, pathlib
 
 ROOT = pathlib.Path(__file__).parent
 SITE_NAME = "Influvia"
-DOMAIN = "https://influvia.app"  # alan adı netleşince değişir
+DOMAIN = "https://yigitk75.github.io/influvia-site"  # geçici; alan adı alınınca influvia.app
 SUPPORT = "destek@moonnect.com"
 PLAY_URL = "https://play.google.com/store/apps/details?id=com.moonnect.app"
 PLAY_RATING = None          # ör. "4,8" — Play Store'da yorum birikince doldur; None iken rozet gösterilmez
@@ -582,7 +582,7 @@ MARKALAR = f"""
 
 def doc_page(md_name, out_dir, title, desc):
     text = (ROOT / "content" / md_name).read_text(encoding="utf-8")
-    text = text.replace("influvia.io", "influvia.app")
+    text = text.replace("https://influvia.io", DOMAIN).replace("influvia.io", DOMAIN.replace("https://", ""))
     html = markdown.markdown(text, extensions=["tables"])
     body = f'<main class="doc">{html}</main>'
     (ROOT / out_dir).mkdir(exist_ok=True)
