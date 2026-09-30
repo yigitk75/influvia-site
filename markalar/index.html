@@ -1,27 +1,34 @@
-import markdown, pathlib
-
-ROOT = pathlib.Path(__file__).parent
-SITE_NAME = "Influvia"
-DOMAIN = "https://influvia.app"  # alan adı netleşince değişir
-SUPPORT = "destek@moonnect.com"
-PLAY_URL = "https://play.google.com/store/apps/details?id=com.moonnect.app"
-PLAY_RATING = None          # ör. "4,8" — Play Store'da yorum birikince doldur; None iken rozet gösterilmez
-BRANDS = ["NordVPN", "Surfshark", "MyHeritage", "Babbel", "FaceApp", "Logitech", "Samsung", "YSL Beauty", "Fujifilm", "NYX", "Migros", "beije", "Novakid", "Odoo"]  # Moonnect'in çalıştığı markalar — listeyi Yiğit onaylar
-CASES = []  # gerçek rakam gelince doldur: {"brand":"...", "sector":"...", "metric":"1,4M+", "metric_label":"izlenme", "sub":"12 üretici · Reels", "note":"..."}
-
-exec((ROOT / "fontcss.txt").read_text())  # FONTCSS = """..."""
-
-ARROW = '<svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
-NOISE = "data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E"
-
-CSS = """
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Markalar için Influvia — Kampanyanı Moonnect üretici ağına aç</title>
+<meta name="description" content="Markalar için Influvia: brief'ini gir, ödülü belirle, başvuruları Influvia Skoru ile gör, teslimleri doğrula. Moonnect üretici ağı.">
+<meta name="theme-color" content="#050507">
+<link rel="icon" type="image/png" href="../assets/favicon.png">
+<link rel="apple-touch-icon" href="../assets/icon-192.png">
+<meta property="og:type" content="website"><meta property="og:site_name" content="Influvia">
+<meta property="og:title" content="Markalar için Influvia — Kampanyanı Moonnect üretici ağına aç"><meta property="og:description" content="Markalar için Influvia: brief'ini gir, ödülü belirle, başvuruları Influvia Skoru ile gör, teslimleri doğrula. Moonnect üretici ağı."><meta property="og:image" content="https://influvia.app/assets/og.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preload" as="font" type="font/woff2" href="../assets/fonts/instrument-serif-latin-ext-400-italic.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="../assets/fonts/inter-latin-ext-500-normal.woff2" crossorigin>
+<style>@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url("../assets/fonts/instrument-serif-latin-ext-400-italic.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Instrument Serif";font-style:italic;font-weight:400;font-display:swap;src:url("../assets/fonts/instrument-serif-latin-400-italic.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Instrument Serif";font-style:normal;font-weight:400;font-display:swap;src:url("../assets/fonts/instrument-serif-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Instrument Serif";font-style:normal;font-weight:400;font-display:swap;src:url("../assets/fonts/instrument-serif-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("../assets/fonts/inter-latin-ext-400-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("../assets/fonts/inter-latin-400-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("../assets/fonts/inter-latin-ext-500-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("../assets/fonts/inter-latin-500-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("../assets/fonts/inter-latin-ext-600-normal.woff2") format("woff2");unicode-range:U+0100-02BA,U+02BD-02C5,U+02C7-02CC,U+02CE-02D7,U+02DD-02FF,U+0304,U+0308,U+0329,U+1D00-1DBF,U+1E00-1E9F,U+1EF2-1EFF,U+2020,U+20A0-20AB,U+20AD-20C0,U+2113,U+2C60-2C7F,U+A720-A7FF}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("../assets/fonts/inter-latin-600-normal.woff2") format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 :root{--bg:#050507;--bg2:#0b0b10;--text:#F4F4F7;--dim:#A3A3AF;--dim2:#6E6E7A;--mint:#00CC88;--teal:#1FD1C2;--violet:#6D4AFF;--violet2:#8B6DFF;--line:rgba(255,255,255,.08);--line2:rgba(255,255,255,.16);--ease:cubic-bezier(.2,.7,.2,1)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
 body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,-apple-system,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 a{color:inherit}img,video{max-width:100%;display:block}
 .wrap{max-width:1180px;margin:0 auto;padding:0 28px}
 ::selection{background:rgba(109,74,255,.45)}
-.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background:url("NOISE_URI");animation:grain 1.2s steps(3) infinite}
+.grain{position:fixed;inset:-50%;width:200%;height:200%;z-index:60;pointer-events:none;opacity:.045;mix-blend-mode:overlay;background:url("data:image/svg+xml;utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");animation:grain 1.2s steps(3) infinite}
 @keyframes grain{0%{transform:translate(0,0)}33%{transform:translate(-2%,1%)}66%{transform:translate(1%,-2%)}100%{transform:translate(0,0)}}
 
 /* nav */
@@ -275,226 +282,18 @@ footer .mark{margin:30px 0 -.12em;text-align:center;font-family:"Instrument Seri
  .compare,.two,.split,.types,.cases{grid-template-columns:1fr}.proofn{grid-template-columns:repeat(2,1fr);gap:28px 12px}.form{padding:26px 20px}.form .g{grid-template-columns:1fr}.strip span{font-size:24px}.split{gap:32px}
  #cta{padding-top:120px;min-height:80svh}#cta .planet{width:300vw;top:40%}
 }
-""".replace("NOISE_URI", NOISE)
-
-JS = """
-(function(){
- var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
- document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
- var links=[].slice.call(document.querySelectorAll('.pill a[href^="#"],.bnav a[href^="#"]'));
- var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
- function setActive(){var y=window.scrollY+innerHeight*.4,cur=null;secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)})}
- addEventListener('scroll',setActive,{passive:true});setActive();
- var h=document.querySelector('.hero h1'),sub=document.querySelector('.hero .sub'),kick=document.querySelector('.hero .kicker'),media=document.querySelector('.hero .bg .media');
- var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
- function fade(){var y=scrollY;if(h){var p=Math.min(1,y/(innerHeight*.55));h.style.opacity=1-p;h.style.transform='translateY('+(-y*.18)+'px)';h.style.filter='blur('+(p*10)+'px)'}
-  if(kick){kick.style.opacity=1-Math.min(1,y/(innerHeight*.3))}
-  if(sub){sub.style.opacity=1-Math.min(1,y/(innerHeight*.35))}
-  if(media&&!reduce){media.style.transform='translate3d(-50%,'+(y*.22)+'px,0)'}}
- addEventListener('scroll',fade,{passive:true});fade();
- var v=document.querySelector('.hero video');if(v){v.addEventListener('canplay',function(){v.classList.add('ready')});if(v.readyState>=3)v.classList.add('ready');if(reduce){v.pause();v.remove()}}
- document.querySelectorAll('.card').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')})});
-})();
-"""
-
-NAV_LINKS = [("#uygulama", "Uygulama"), ("#nasil", "Nasıl çalışır"), ("#ekranlar", "Ekranlar"), ("markalar/", "Markalar"), ("#sss", "SSS")]
-
-def shell(title, body, desc, path_prefix="", doc=False, og="assets/og.jpg", current=None):
-    home = path_prefix if path_prefix else ""
-    def href(h):
-        return (path_prefix + h) if not h.startswith("#") else (home + h)
-    pill = "".join(f'<a href="{href(h)}"{" class=on" if h == current else ""}>{l}</a>' for h, l in NAV_LINKS)
-    bnav = "".join(f'<a href="{href(h)}">{l}</a>' for h, l in NAV_LINKS[:2]) + f'<a href="{href("markalar/")}">Markalar</a><a href="{PLAY_URL}">İndir</a>'
-    return f"""<!doctype html>
-<html lang="tr">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{title}</title>
-<meta name="description" content="{desc}">
-<meta name="theme-color" content="#050507">
-<link rel="icon" type="image/png" href="{path_prefix}assets/favicon.png">
-<link rel="apple-touch-icon" href="{path_prefix}assets/icon-192.png">
-<meta property="og:type" content="website"><meta property="og:site_name" content="Influvia">
-<meta property="og:title" content="{title}"><meta property="og:description" content="{desc}"><meta property="og:image" content="{DOMAIN}/{og}">
-<meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="font" type="font/woff2" href="{path_prefix}assets/fonts/instrument-serif-latin-ext-400-italic.woff2" crossorigin><link rel="preload" as="font" type="font/woff2" href="{path_prefix}assets/fonts/inter-latin-ext-500-normal.woff2" crossorigin>
-<style>{FONTCSS.replace("{FP}", path_prefix)}{CSS}</style>
+</style>
 </head>
-<body class="{'docpage' if doc else ''}">
-{'<div class="docbg"></div>' if doc else ''}
+<body class="">
+
 <div class="grain" aria-hidden="true"></div>
 <nav class="nav">
- <a class="logo" href="{home or './'}"><img src="{path_prefix}assets/icon-192.png" alt="">Influvia</a>
- <div class="pill">{pill}</div>
- <div class="right"><a class="btn white" href="{PLAY_URL}">Google Play {ARROW}</a></div>
+ <a class="logo" href="../"><img src="../assets/icon-192.png" alt="">Influvia</a>
+ <div class="pill"><a href="../#uygulama">Uygulama</a><a href="../#nasil">Nasıl çalışır</a><a href="../#ekranlar">Ekranlar</a><a href="../markalar/" class=on>Markalar</a><a href="../#sss">SSS</a></div>
+ <div class="right"><a class="btn white" href="https://play.google.com/store/apps/details?id=com.moonnect.app">Google Play <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </nav>
-<div class="bnav">{bnav}</div>
-{body}
-<footer><div class="wrap">
- <div class="top">
-  <div><a class="logo" href="{home or './'}"><img src="{path_prefix}assets/icon-192.png" alt="">Influvia</a><p class="tag">İçerik üreticileri için kampanya, teslim, ödeme ve performans — tek uygulamada.</p></div>
-  <div><h4>Keşfet</h4><ul><li><a href="{home}#uygulama">Uygulama</a></li><li><a href="{home}#nasil">Nasıl çalışır</a></li><li><a href="{path_prefix}markalar/">Markalar için</a></li><li><a href="{PLAY_URL}">Google Play</a></li></ul></div>
-  <div><h4>Şirket</h4><ul><li><a href="https://moonnect.com">Moonnect</a></li><li><a href="{path_prefix}destek/">Destek</a></li><li><a href="mailto:{SUPPORT}">{SUPPORT}</a></li></ul></div>
-  <div><h4>Yasal</h4><ul><li><a href="{path_prefix}gizlilik/">Gizlilik Politikası</a></li><li><a href="{path_prefix}kullanim-kosullari/">Kullanım Koşulları</a></li><li><a href="{path_prefix}hesap-silme/">Hesap ve Veri Silme</a></li></ul></div>
- </div>
- <div class="bottom"><span>© 2026 Moonnect Digital, LLC · Sheridan, WY · İstanbul</span><span>Google Play, Google LLC'nin ticari markasıdır.</span></div>
- <div class="mark" aria-hidden="true">Influvia</div>
-</div></footer>
-<script>{JS}</script>
-</body></html>"""
+<div class="bnav"><a href="../#uygulama">Uygulama</a><a href="../#nasil">Nasıl çalışır</a><a href="../markalar/">Markalar</a><a href="https://play.google.com/store/apps/details?id=com.moonnect.app">İndir</a></div>
 
-def card(n, eyebrow, title, text, img):
-    return f'<div class="card rv {n}"><div class="glow"></div><div class="vis"><img src="assets/{img}" alt="" loading="lazy"></div><div class="body"><span class="eyebrow">{eyebrow}</span><h3>{title}</h3><p>{text}</p></div></div>'
-
-def phone(img, alt, cap, n):
-    return f'<figure class="rv {n}"><div class="phone"><div class="scr"><div class="isl"></div><img src="assets/{img}" alt="{alt}" loading="lazy"></div></div><figcaption>{cap}</figcaption></figure>'
-
-RATING_HTML = f'<span class="rate"><i>★★★★★</i><b>{PLAY_RATING}</b> Google Play</span>' if PLAY_RATING else ""
-STRIP = "".join(f"<span>{b}</span>" for b in BRANDS * 2)
-def cases_html():
-    if not CASES: return ""
-    items = "".join(f'<div class="case rv"><span class="eyebrow">{c["sector"]}</span><div class="m">{c["metric"]}</div><div class="ml">{c["metric_label"]}</div><div class="b">{c["brand"]}</div><div class="sub">{c["sub"]}</div></div>' for c in CASES[:3])
-    return f'<section class="wrap" style="padding-top:0"><span class="eyebrow c rv">— Sonuçlar</span><h2 class="h2 rv"><span class="l1">Rakamlarla</span><span class="l2">kampanyalar</span></h2><p class="lead rv d1">Moonnect kampanyalarından gerçek sonuçlar.</p><div class="cases">{items}</div></section>'
-CASES_HTML = cases_html()
-
-INDEX = f"""
-<header class="hero">
- <div class="bg"><div class="media"><img src="assets/planet.jpg" alt="" fetchpriority="high"><video autoplay muted loop playsinline preload="auto" poster="assets/planet.jpg"><source src="assets/planet.mp4" type="video/mp4"></video></div></div>
- <div class="stars" aria-hidden="true"></div>
- <div class="wrap">
-  <div class="kicker rv"><span class="chip"><b>Yeni</b> Android sürümü Google Play'de</span></div>
-  <h1><span class="l1">Etki yarat,</span><span class="l2">karşılığını al.</span></h1>
-  <div class="sub">
-   <p class="rv d2">Influvia, içerik üreticileri için tek uygulama: sana açık marka kampanyalarını gör, tek dokunuşla başvur, içeriğini teslim et, ödemeni takip et.</p>
-   <div class="r rv d3">
-    <p>Instagram'ını bağla; büyümen gerçek verilerle ölçülsün, Influvia Skorun markaların önüne çıksın.</p>
-    <div class="cta"><a class="btn" href="{PLAY_URL}">İçerik üreticisiyim {ARROW}</a><a class="btn ghost" href="markalar/">Markayım {ARROW}</a></div>
-    <div class="cta" style="gap:18px">{RATING_HTML}<span class="soon">Android'de yayında · App Store yakında</span></div>
-   </div>
-  </div>
- </div>
- <div class="scrollhint" aria-hidden="true"><i></i><i></i><i></i></div>
-</header>
-
-<div id="content">
-<section id="uygulama" class="wrap" style="padding-top:110px">
- <div class="stats rv">
-  <div><b>₺0</b><span>Temel kullanım ücreti</span></div>
-  <div><b>1</b><span>Dokunuşla başvuru</span></div>
-  <div><b>3</b><span>Ödül türü · ürün, ödeme, ikisi</span></div>
-  <div><b>100</b><span>Puanlık Influvia Skoru</span></div>
- </div>
- <p class="quote rv">"Markaya DM atıp günlerce cevap beklemek yok. Brief, teslim ve ödeme — hepsi tek yerde, hepsi takip edilebilir."<small>Influvia ne için var</small></p>
-</section>
-
-<section class="wrap" style="padding-top:0">
- <span class="eyebrow c rv">— Fark</span>
- <h2 class="h2 rv"><span class="l1">Eski yol,</span><span class="l2">yeni yol</span></h2>
- <p class="lead rv d1">Markayla çalışmanın en yorucu kısmı içerik değil, takip. Onu uygulamaya bıraktık.</p>
- <div class="compare">
-  <div class="cmp old rv"><span class="eyebrow" style="color:var(--dim2)">Eskiden</span><h3>DM, Excel, ekran görüntüsü</h3>
-   <ul><li><i>—</i>Markaya DM atıp günlerce cevap beklemek</li><li><i>—</i>Brief'i mesajlardan toparlamaya çalışmak</li><li><i>—</i>Paylaşımın ekran görüntüsünü alıp göndermek</li><li><i>—</i>Ödemeyi ne zaman, ne kadar alacağını sormak</li><li><i>—</i>Büyümeni tahminle anlatmak</li></ul></div>
-  <div class="cmp new rv d1"><span class="eyebrow" style="color:var(--mint)">Influvia'da</span><h3>Bildirim, link, durum</h3>
-   <ul><li><i>✓</i>Sana açık kampanyalar tek listede, tek dokunuşla başvuru</li><li><i>✓</i>Brief, ödül türü ve son teslim tarihi kampanya kartında</li><li><i>✓</i>Paylaştığın içeriğin linkini gönder, doğrulama uygulamada</li><li><i>✓</i>Ödemenin durumu Bakiye ekranında, adım adım</li><li><i>✓</i>Influvia Skoru gerçek Instagram verisinden</li></ul></div>
- </div>
- <div class="proof rv">
-  <p class="who">Influvia, <b>Moonnect</b>'in üretici ağının uygulamasıdır. Moonnect'in kampanyalarında bugüne kadar:</p>
-  <div class="proofn"><div><b>20.000+</b><span>Üretici ağı</span></div><div><b>500M+</b><span>Toplam izlenme</span></div><div><b>50+</b><span>Global marka</span></div><div><b>30+</b><span>Ülke</span></div></div>
-  <div class="strip" aria-hidden="true"><div class="track">{STRIP}</div></div>
- </div>
-</section>
-{CASES_HTML}
-
-<section class="wrap">
- <span class="eyebrow c rv">— Özellikler</span>
- <h2 class="h2 rv"><span class="l1">Uygulamada</span><span class="l2">neler var</span></h2>
- <p class="lead rv d1">Bir markayla çalışmanın her adımı: keşiften ödemeye, tek ekranda.</p>
- <div class="cards">
-  {card("", "01 — Keşif", "Kampanyalar", "Sana açık kampanyaları brief, ödül türü ve son teslim tarihiyle birlikte gör; tek dokunuşla başvur.", "f-kampanyalar.webp")}
-  {card("d1", "02 — Süreç", "Teslim ve ödeme", "Kabul edilince bildirim al, içerik linkini gönder, doğrulama ve ödeme durumunu uygulamadan izle.", "f-odeme.webp")}
-  {card("d2", "03 — Ölçüm", "Influvia Skoru", "Instagram'ını bağla; takipçi büyümen, izlenme gelişimin ve paylaşım düzenin gerçek verilerden ölçülsün.", "f-skor.webp")}
-  {card("", "04 — Analiz", "Performans", "Reels performansını, en güçlü içeriklerini ve kitle dağılımını tek ekranda gör.", "f-performans.webp")}
-  {card("d1", "05 — Yapay zekâ", "İçerik analizi", "Galerinden bir görsel ya da video seç, paylaşmadan önce yapay zekâ destekli geri bildirim al.", "f-analiz.webp")}
-  {card("d2", "06 — Gelişim", "Hedefler ve Akademi", "Haftalık hedefler koy, görevlerini takip et, Akademi içerikleriyle gelişmeye devam et.", "f-hedef.webp")}
- </div>
-</section>
-
-<section id="nasil" class="wrap">
- <span class="eyebrow c rv">— Süreç</span>
- <h2 class="h2 rv"><span class="l1">Nasıl</span><span class="l2">çalışır</span></h2>
- <p class="lead rv d1">Altı adım, tek uygulama. Her adımda nerede olduğunu görürsün.</p>
- <div class="rows">
-  <div class="row rv"><div class="i">01</div><div class="n">Keşfet</div><p>Sana açık kampanyaları brief, ödül türü ve son teslim tarihiyle gör.</p><div class="t">Kampanyalar</div></div>
-  <div class="row rv"><div class="i">02</div><div class="n">Başvur</div><p>Uygunsa tek dokunuşla başvur; kabul kararı bildirimle gelir.</p><div class="t">Tek dokunuş</div></div>
-  <div class="row rv"><div class="i">03</div><div class="n">Üret</div><p>Brief'e uygun içeriğini hazırla; istersen paylaşmadan önce analiz ettir.</p><div class="t">İçerik analizi</div></div>
-  <div class="row rv"><div class="i">04</div><div class="n">Teslim et</div><p>Paylaştığın içeriğin linkini gönder; doğrulama başlasın.</p><div class="t">Doğrulama</div></div>
-  <div class="row rv"><div class="i">05</div><div class="n">Ödemeni al</div><p>Doğrulama tamamlanınca ödeme süreci başlar; durumunu Bakiye ekranından izle.</p><div class="t">Bakiye</div></div>
-  <div class="row rv"><div class="i">06</div><div class="n">Büyü</div><p>Influvia Skoru ve performans ekranlarıyla nerede güçlendiğini gör, sonraki kampanyaya daha güçlü gir.</p><div class="t">Skor</div></div>
- </div>
-</section>
-
-<section id="ekranlar" class="wrap">
- <span class="eyebrow c rv">— Uygulama</span>
- <h2 class="h2 rv"><span class="l1">Uygulamadan</span><span class="l2">ekranlar</span></h2>
- <p class="lead rv d1">Karanlık, sade, hızlı. Her şey başparmağının altında.</p>
- <div class="shots">
-  {phone("01-kampanyalar.jpg", "Kampanya listesi", "Kampanyalar", "")}
-  {phone("03-kampanya-detay.jpg", "Kampanya detayı", "Kampanya detayı", "d1")}
-  {phone("02-anasayfa.jpg", "Influvia ana sayfa", "Ana sayfa", "d2")}
-  {phone("05-performans.jpg", "Performans ve Influvia Skoru", "Performans", "d3")}
-  {phone("04-gorevler.jpg", "Görevler", "Görevler", "d4")}
- </div>
-</section>
-
-<section id="kimler" class="wrap">
- <span class="eyebrow c rv">— Kimler için</span>
- <h2 class="h2 rv"><span class="l1">Herkese</span><span class="l2">bir yer var</span></h2>
- <p class="lead rv d1">Üreticiler için ücretsiz. Markalar ve ajanslar için birlikte kurguluyoruz.</p>
- <div class="plans">
-  <div class="plan rv"><span class="eyebrow">Marka</span><div class="price">Kampanya aç</div><p class="d">Ürününü Moonnect'in üretici ağıyla buluştur; başvuruları ve teslimleri tek panelden yönet.</p>
-   <ul><li>Brief ve ödül tanımı</li><li>Başvuru ve skor görünümü</li><li>İçerik doğrulama</li><li>Ödeme takibi</li></ul>
-   <a class="btn ghost" href="mailto:{SUPPORT}?subject=Influvia%20-%20Marka%20i%C5%9F%20birli%C4%9Fi">Bize yaz {ARROW}</a></div>
-  <div class="plan hi rv d1"><span class="tag">Uygulama</span><span class="eyebrow">İçerik üreticisi</span><div class="price">Ücretsiz<small>temel kullanım</small></div><p class="d">Kampanyalara başvurmak, içerik teslim etmek ve büyümeni ölçmek için. Reklam yok.</p>
-   <ul><li>Açık kampanyalar</li><li>Tek dokunuşla başvuru</li><li>Influvia Skoru ve performans</li><li>Hedefler ve Akademi</li><li>İçerik analizi · aylık ücretsiz kota</li></ul>
-   <a class="btn" href="{PLAY_URL}">Google Play'den indir {ARROW}</a></div>
-  <div class="plan rv d2"><span class="eyebrow">Ajans</span><div class="price">Birlikte</div><p class="d">Birden fazla marka ya da üreticiyle çalışıyorsan sana özel kurgu için görüşelim.</p>
-   <ul><li>Birden fazla marka</li><li>Sana özel kampanya kurgusu</li><li>Raporlama</li><li>Öncelikli iletişim</li></ul>
-   <a class="btn ghost" href="mailto:{SUPPORT}?subject=Influvia%20-%20Ajans">Görüşelim {ARROW}</a></div>
- </div>
-</section>
-
-<section id="sss" class="wrap">
- <span class="eyebrow c rv">— SSS</span>
- <h2 class="h2 rv"><span class="l1">Sık sorulan</span><span class="l2">sorular</span></h2>
- <div class="faq rv d1" style="margin-top:56px">
-  <details><summary>Instagram'ımı bağlamak zorunda mıyım?</summary><div class="a">Hayır. Bağlantı isteğe bağlıdır; bağlarsan Influvia Skoru ve performans ekranları çalışır. Şifren hiçbir zaman Influvia'ya iletilmez, yetkiyi Instagram'ın kendi ekranından verirsin.</div></details>
-  <details><summary>Influvia Skoru nasıl hesaplanıyor?</summary><div class="a">Takipçi büyümen, izlenme gelişimin, paylaşım düzenin ve izlenme istikrarın gibi gerçek ölçüm verilerinden. Yeterli geçmiş birikene kadar "ön sonuç" olarak gösterilir.</div></details>
-  <details><summary>Uygulama ücretli mi?</summary><div class="a">Temel kullanım ücretsiz: kampanyalar, başvuru, teslim, ödeme takibi, Influvia Skoru ve performans. Yapay zekâ destekli içerik analizinde aylık ücretsiz bir kota var; daha fazlası için premium plan hazırlanıyor. Reklam yok.</div></details>
-  <details><summary>Ödemem ne zaman yapılır?</summary><div class="a">Teslim ettiğin içerik doğrulandıktan sonra ödeme süreci başlar; durumunu uygulamadaki Ödemeler / Bakiye ekranından görebilirsin.</div></details>
-  <details><summary>iPhone sürümü ne zaman?</summary><div class="a">Önce Android ile başlıyoruz; App Store sürümü hazırlanıyor. Çıktığında buradan ve uygulama içi bildirimle duyuracağız.</div></details>
-  <details><summary>Hesabımı nasıl silerim?</summary><div class="a">Profil ekranının altındaki "Hesabımı Sil" ile anında silebilirsin. Ayrıntılar için <a href="hesap-silme/">Hesap ve veri silme</a> sayfasına bak.</div></details>
- </div>
-</section>
-</div>
-
-<section id="cta">
- <img class="planet" src="assets/planet-1200.jpg" alt="" loading="lazy">
- <span class="eyebrow c rv">— Başla</span>
- <h2 class="h2 rv"><span class="l1">Bugün</span><span class="l2">başla</span></h2>
- <p class="rv d1">Hesap açmak bir dakika sürer. İlk kampanyana bugün başvur, gerisini uygulama takip etsin.</p>
- <div class="cta rv d2" style="justify-content:center"><a class="btn" href="{PLAY_URL}">Google Play'den indir {ARROW}</a><a class="btn ghost" href="mailto:{SUPPORT}?subject=Influvia%20iOS%20haber%20ver">iOS çıkınca haber ver</a></div>
-</section>
-"""
-
-(ROOT / "index.html").write_text(shell("Influvia — Etki yarat, karşılığını al", INDEX, "İçerik üreticileri için kampanya ve performans uygulaması. Marka kampanyalarına başvur, içerik teslim et, ödemeni takip et, Instagram büyümeni ölç."), encoding="utf-8")
-
-
-MARKA_FORM_JS = """
-(function(){var f=document.getElementById('bform');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);var body=['Marka: '+d.get('marka'),'Ad Soyad: '+d.get('ad'),'E-posta: '+d.get('email'),'Kampanya türü: '+d.get('tur'),'Bütçe: '+d.get('butce'),'','Not:',d.get('not')].join('%0D%0A');location.href='mailto:SUPPORT?subject='+encodeURIComponent('Influvia — Marka görüşmesi: '+d.get('marka'))+'&body='+body;document.getElementById('bok').style.display='block'})})();
-""".replace("SUPPORT", SUPPORT)
-
-MARKALAR = f"""
 <header class="hero brand">
  <div class="bg"><div class="media"><img src="../assets/planet.jpg" alt=""></div></div>
  <div class="stars" aria-hidden="true"></div>
@@ -505,7 +304,7 @@ MARKALAR = f"""
    <p class="rv d2">Brief'ini gir, ödülü belirle; kampanyan Influvia'daki üreticilere açılsın. Başvuruları skorlarıyla gör, içerikleri doğrula, ödemeyi tek yerden takip et.</p>
    <div class="r rv d3">
     <p>Kampanyalar Moonnect ekibiyle birlikte kurulur; ilk kampanya için görüşme yeterli.</p>
-    <div class="cta"><a class="btn" href="#gorus">Görüşme talep et {ARROW}</a><a class="btn ghost" href="../">Üretici tarafı {ARROW}</a></div>
+    <div class="cta"><a class="btn" href="#gorus">Görüşme talep et <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a><a class="btn ghost" href="../">Üretici tarafı <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
    </div>
   </div>
  </div>
@@ -516,7 +315,7 @@ MARKALAR = f"""
  <div class="proof rv" style="margin-top:0">
   <p class="who">Influvia'nın arkasında <b>Moonnect</b> var: İstanbul ve Sheridan merkezli, 30'dan fazla ülkede kampanya yürüten bir influencer marketing ajansı.</p>
   <div class="proofn"><div><b>20.000+</b><span>Üretici ağı</span></div><div><b>500M+</b><span>Toplam izlenme</span></div><div><b>50+</b><span>Global marka</span></div><div><b>30+</b><span>Ülke</span></div></div>
-  <div class="strip" aria-hidden="true"><div class="track">{STRIP}</div></div>
+  <div class="strip" aria-hidden="true"><div class="track"><span>NordVPN</span><span>Surfshark</span><span>MyHeritage</span><span>Babbel</span><span>FaceApp</span><span>Logitech</span><span>Samsung</span><span>YSL Beauty</span><span>Fujifilm</span><span>NYX</span><span>Migros</span><span>beije</span><span>Novakid</span><span>Odoo</span><span>NordVPN</span><span>Surfshark</span><span>MyHeritage</span><span>Babbel</span><span>FaceApp</span><span>Logitech</span><span>Samsung</span><span>YSL Beauty</span><span>Fujifilm</span><span>NYX</span><span>Migros</span><span>beije</span><span>Novakid</span><span>Odoo</span></div></div>
  </div>
 </section>
 
@@ -557,7 +356,7 @@ MARKALAR = f"""
 <section id="gorus" class="wrap" style="padding-top:0">
  <span class="eyebrow c rv">— Görüşme</span>
  <h2 class="h2 rv"><span class="l1">İlk kampanyanı</span><span class="l2">birlikte kuralım</span></h2>
- <p class="lead rv d1">Formu doldur; iş günlerinde 24 saat içinde dönüyoruz. Ya da doğrudan yaz: <a href="mailto:{SUPPORT}" style="color:#fff">{SUPPORT}</a></p>
+ <p class="lead rv d1">Formu doldur; iş günlerinde 24 saat içinde dönüyoruz. Ya da doğrudan yaz: <a href="mailto:destek@moonnect.com" style="color:#fff">destek@moonnect.com</a></p>
  <form class="form rv d2" id="bform">
   <div class="g">
    <div class="f"><label for="marka">Marka</label><input id="marka" name="marka" required placeholder="Marka adı"></div>
@@ -569,47 +368,43 @@ MARKALAR = f"""
   </div>
   <div class="f"><label for="butce">Aylık bütçe (yaklaşık)</label><select id="butce" name="butce"><option>₺50.000 altı</option><option>₺50.000 – ₺150.000</option><option>₺150.000 – ₺500.000</option><option>₺500.000 üzeri</option><option>Konuşarak belirleyelim</option></select></div>
   <div class="f"><label for="not">Kısaca ne yapmak istiyorsun?</label><textarea id="not" name="not" placeholder="Ürün, hedef kitle, zamanlama..."></textarea></div>
-  <button class="btn block" type="submit">Görüşme talep et {ARROW}</button>
-  <div class="ok" id="bok">E-posta uygulaman açıldı; gönderdiğinde talebin bize düşer. Açılmadıysa {SUPPORT} adresine yazabilirsin.</div>
+  <button class="btn block" type="submit">Görüşme talep et <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+  <div class="ok" id="bok">E-posta uygulaman açıldı; gönderdiğinde talebin bize düşer. Açılmadıysa destek@moonnect.com adresine yazabilirsin.</div>
   <p class="note">Form, bilgileri e-posta olarak Moonnect'e iletir; başka bir yere kaydedilmez.</p>
  </form>
 </section>
 </div>
-<script>{MARKA_FORM_JS}</script>
-"""
-(ROOT / "markalar").mkdir(exist_ok=True)
-(ROOT / "markalar" / "index.html").write_text(shell("Markalar için Influvia — Kampanyanı Moonnect üretici ağına aç", MARKALAR, "Markalar için Influvia: brief'ini gir, ödülü belirle, başvuruları Influvia Skoru ile gör, teslimleri doğrula. Moonnect üretici ağı.", "../", current="markalar/"), encoding="utf-8")
+<script>
+(function(){var f=document.getElementById('bform');if(!f)return;f.addEventListener('submit',function(e){e.preventDefault();var d=new FormData(f);var body=['Marka: '+d.get('marka'),'Ad Soyad: '+d.get('ad'),'E-posta: '+d.get('email'),'Kampanya türü: '+d.get('tur'),'Bütçe: '+d.get('butce'),'','Not:',d.get('not')].join('%0D%0A');location.href='mailto:destek@moonnect.com?subject='+encodeURIComponent('Influvia — Marka görüşmesi: '+d.get('marka'))+'&body='+body;document.getElementById('bok').style.display='block'})})();
+</script>
 
-def doc_page(md_name, out_dir, title, desc):
-    text = (ROOT / "content" / md_name).read_text(encoding="utf-8")
-    text = text.replace("influvia.io", "influvia.app")
-    html = markdown.markdown(text, extensions=["tables"])
-    body = f'<main class="doc">{html}</main>'
-    (ROOT / out_dir).mkdir(exist_ok=True)
-    (ROOT / out_dir / "index.html").write_text(shell(f"{title} — Influvia", body, desc, "../", doc=True), encoding="utf-8")
-
-doc_page("gizlilik-politikasi.md", "gizlilik", "Gizlilik Politikası", "Influvia gizlilik politikası: hangi verileri işliyoruz, neden, ne kadar süreyle; Instagram verileri; haklarınız.")
-doc_page("hesap-silme.md", "hesap-silme", "Hesap ve Veri Silme", "Influvia hesabınızı ve verilerinizi uygulama içinden veya e-postayla nasıl silersiniz.")
-doc_page("kullanim-kosullari.md", "kullanim-kosullari", "Kullanım Koşulları", "Influvia kullanım koşulları.")
-
-DESTEK = f"""
-<main class="doc">
-<h1>Destek</h1>
-<p>Bir sorun mu var, öneri mi? Bize <a href="mailto:{SUPPORT}">{SUPPORT}</a> adresinden yaz; iş günlerinde genellikle 24 saat içinde dönüyoruz.</p>
-<h2>Sık sorulanlar</h2>
-<h3>Instagram'ımı bağlamak zorunda mıyım?</h3><p>Hayır. Bağlantı isteğe bağlıdır; bağlarsan Influvia Skoru ve performans ekranları çalışır. Şifren hiçbir zaman Influvia'ya iletilmez, yetkiyi Instagram'ın kendi ekranından verirsin.</p>
-<h3>Influvia Skorum nasıl hesaplanıyor?</h3><p>Takipçi büyümen, izlenme gelişimin, paylaşım düzenin ve izlenme istikrarın gibi gerçek ölçüm verilerinden. Yeterli geçmiş birikene kadar "ön sonuç" olarak gösterilir.</p>
-<h3>Ödemem ne zaman yapılır?</h3><p>Teslim ettiğin içerik doğrulandıktan sonra ödeme süreci başlar; durumunu uygulamadaki Ödemeler / Bakiye ekranından görebilirsin.</p>
-<h3>Hesabımı nasıl silerim?</h3><p>Profil ekranının altındaki "Hesabımı Sil" ile anında silebilirsin. Ayrıntılar: <a href="../hesap-silme/">Hesap ve veri silme</a>.</p>
-<h2>Şirket</h2>
-<p>Influvia, Moonnect Digital, LLC (30 N. Gould St., Sheridan, WY 82801, ABD; İstanbul, Türkiye) tarafından geliştirilir.</p>
-</main>
-"""
-(ROOT / "destek").mkdir(exist_ok=True)
-(ROOT / "destek" / "index.html").write_text(shell("Destek — Influvia", DESTEK, "Influvia destek ve sık sorulan sorular.", "../", doc=True), encoding="utf-8")
-
-(ROOT / "404.html").write_text(shell("Sayfa bulunamadı — Influvia", '<main class="doc"><h1>Sayfa bulunamadı</h1><p><a href="./">Ana sayfaya dön</a></p></main>', "Sayfa bulunamadı", doc=True), encoding="utf-8")
-(ROOT / ".nojekyll").write_text("")
-(ROOT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {DOMAIN}/sitemap.xml\n")
-(ROOT / "sitemap.xml").write_text('<?xml version="1.0" encoding="UTF-8"?><urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' + "".join(f"<url><loc>{DOMAIN}/{p}</loc></url>" for p in ["", "markalar/", "gizlilik/", "hesap-silme/", "kullanim-kosullari/", "destek/"]) + "</urlset>")
-print("built")
+<footer><div class="wrap">
+ <div class="top">
+  <div><a class="logo" href="../"><img src="../assets/icon-192.png" alt="">Influvia</a><p class="tag">İçerik üreticileri için kampanya, teslim, ödeme ve performans — tek uygulamada.</p></div>
+  <div><h4>Keşfet</h4><ul><li><a href="../#uygulama">Uygulama</a></li><li><a href="../#nasil">Nasıl çalışır</a></li><li><a href="../markalar/">Markalar için</a></li><li><a href="https://play.google.com/store/apps/details?id=com.moonnect.app">Google Play</a></li></ul></div>
+  <div><h4>Şirket</h4><ul><li><a href="https://moonnect.com">Moonnect</a></li><li><a href="../destek/">Destek</a></li><li><a href="mailto:destek@moonnect.com">destek@moonnect.com</a></li></ul></div>
+  <div><h4>Yasal</h4><ul><li><a href="../gizlilik/">Gizlilik Politikası</a></li><li><a href="../kullanim-kosullari/">Kullanım Koşulları</a></li><li><a href="../hesap-silme/">Hesap ve Veri Silme</a></li></ul></div>
+ </div>
+ <div class="bottom"><span>© 2026 Moonnect Digital, LLC · Sheridan, WY · İstanbul</span><span>Google Play, Google LLC'nin ticari markasıdır.</span></div>
+ <div class="mark" aria-hidden="true">Influvia</div>
+</div></footer>
+<script>
+(function(){
+ var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{rootMargin:'0px 0px -8% 0px',threshold:.08});
+ document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+ var links=[].slice.call(document.querySelectorAll('.pill a[href^="#"],.bnav a[href^="#"]'));
+ var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'))}).filter(Boolean);
+ function setActive(){var y=window.scrollY+innerHeight*.4,cur=null;secs.forEach(function(s){if(s.offsetTop<=y)cur=s.id});links.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+cur)})}
+ addEventListener('scroll',setActive,{passive:true});setActive();
+ var h=document.querySelector('.hero h1'),sub=document.querySelector('.hero .sub'),kick=document.querySelector('.hero .kicker'),media=document.querySelector('.hero .bg .media');
+ var reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ function fade(){var y=scrollY;if(h){var p=Math.min(1,y/(innerHeight*.55));h.style.opacity=1-p;h.style.transform='translateY('+(-y*.18)+'px)';h.style.filter='blur('+(p*10)+'px)'}
+  if(kick){kick.style.opacity=1-Math.min(1,y/(innerHeight*.3))}
+  if(sub){sub.style.opacity=1-Math.min(1,y/(innerHeight*.35))}
+  if(media&&!reduce){media.style.transform='translate3d(-50%,'+(y*.22)+'px,0)'}}
+ addEventListener('scroll',fade,{passive:true});fade();
+ var v=document.querySelector('.hero video');if(v){v.addEventListener('canplay',function(){v.classList.add('ready')});if(v.readyState>=3)v.classList.add('ready');if(reduce){v.pause();v.remove()}}
+ document.querySelectorAll('.card').forEach(function(c){c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px')})});
+})();
+</script>
+</body></html>

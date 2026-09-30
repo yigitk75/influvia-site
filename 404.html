@@ -185,6 +185,72 @@ footer .tag{margin-top:14px;max-width:280px;color:var(--dim2)}
 footer .bottom{margin-top:48px;padding-top:24px;border-top:1px solid var(--line);display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;color:var(--dim2);font-size:13px}
 footer .mark{margin:30px 0 -.12em;text-align:center;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:clamp(120px,24vw,360px);line-height:.78;letter-spacing:-.03em;background:linear-gradient(180deg,rgba(255,255,255,.14),rgba(255,255,255,0) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;pointer-events:none}
 
+
+/* hero dual cta */
+.hero .cta .btn.ghost{color:#fff}
+.rate{display:inline-flex;align-items:center;gap:8px;font-size:13px;color:#D9D9E0}
+.rate b{color:#fff;font-weight:600}.rate i{color:#FFC84A;font-style:normal;letter-spacing:1px}
+
+/* compare */
+.compare{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:10px}
+.cmp{position:relative;border-radius:26px;padding:34px 34px 30px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008))}
+.cmp:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.cmp.new{background:radial-gradient(120% 90% at 50% 0%,rgba(0,204,136,.14),rgba(31,209,194,.03) 55%,rgba(255,255,255,.01))}
+.cmp.new:before{background:linear-gradient(180deg,rgba(0,204,136,.7),rgba(31,209,194,.18) 60%,rgba(0,204,136,.4))}
+.cmp h3{margin:0 0 6px;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:38px;letter-spacing:-.01em;line-height:1}
+.cmp .eyebrow{display:block;margin-bottom:22px}
+.cmp ul{list-style:none;margin:22px 0 0;padding:0}
+.cmp li{display:flex;gap:16px;align-items:flex-start;padding:16px 0;border-top:1px solid var(--line);font-size:15.5px;color:#D4D4DC}
+.cmp li i{flex:none;width:22px;height:22px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;margin-top:1px}
+.cmp.old li{color:var(--dim)}.cmp.old li i{background:rgba(255,255,255,.06);color:var(--dim2)}
+.cmp.new li i{background:linear-gradient(135deg,var(--mint),var(--teal));color:#05231a;font-weight:700}
+
+/* proof */
+.proof{margin-top:110px;text-align:center}
+.proof .who{font-size:13px;color:var(--dim);margin:0 0 26px}
+.proof .who b{color:#fff;font-weight:500}
+.proofn{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:900px;margin:0 auto}
+.proofn b{display:block;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(38px,4.6vw,58px);line-height:1;letter-spacing:-.02em}
+.proofn span{display:block;margin-top:10px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.strip{position:relative;margin:44px -28px 0;overflow:hidden;-webkit-mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent);mask:linear-gradient(90deg,transparent,#000 12%,#000 88%,transparent)}
+.strip .track{display:flex;gap:64px;width:max-content;animation:strip 46s linear infinite;padding:6px 0}
+.strip:hover .track{animation-play-state:paused}
+.strip span{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:30px;color:rgba(255,255,255,.42);white-space:nowrap;letter-spacing:-.01em}
+@keyframes strip{to{transform:translateX(-50%)}}
+
+/* cases */
+.cases{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.case{position:relative;border-radius:26px;padding:30px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008))}
+.case:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.case .m{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-size:64px;line-height:1;letter-spacing:-.02em;margin:18px 0 4px}
+.case .ml{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim)}
+.case .b{font-size:18px;font-weight:500;margin-top:22px}.case .sub{color:var(--dim);font-size:14px;margin-top:4px}
+
+/* form */
+.form{max-width:760px;margin:0 auto;position:relative;border-radius:28px;padding:40px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008))}
+.form:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(180deg,rgba(139,109,255,.7),rgba(109,74,255,.15) 60%,rgba(109,74,255,.4));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.form .g{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.form label{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim);margin:0 0 8px}
+.form .f{margin-bottom:16px}
+.form input,.form select,.form textarea{width:100%;height:50px;border-radius:14px;border:1px solid var(--line2);background:rgba(255,255,255,.03);color:#fff;padding:0 16px;font:inherit;font-size:15px;outline:none;transition:border-color .2s,background .2s}
+.form textarea{height:120px;padding:14px 16px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{border-color:rgba(139,109,255,.8);background:rgba(109,74,255,.06)}
+.form select option{background:#0b0b10}
+.form .note{font-size:13px;color:var(--dim2);margin-top:14px}
+.form .ok{display:none;margin-top:16px;padding:14px 16px;border-radius:14px;background:rgba(0,204,136,.1);border:1px solid rgba(0,204,136,.35);color:#c9ffe9;font-size:14px}
+
+/* brand page hero */
+.hero.brand{min-height:88svh}
+.hero.brand .bg .media{opacity:.75}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:64px;align-items:start}
+.split .h2{text-align:left}.split .lead{text-align:left;margin:0 0 32px}
+.types{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.type{position:relative;border-radius:24px;padding:28px;background:linear-gradient(180deg,rgba(255,255,255,.03),rgba(255,255,255,.008))}
+.type:before{content:"";position:absolute;inset:0;border-radius:inherit;padding:1px;background:linear-gradient(180deg,rgba(255,255,255,.16),rgba(255,255,255,.05));-webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none}
+.type h3{margin:14px 0 8px;font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:32px;line-height:1.05}
+.type p{margin:0;color:var(--dim);font-size:15px}
+
 /* docs */
 .doc{position:relative;z-index:1;max-width:760px;margin:0 auto;padding:150px 24px 100px}
 .doc h1{font-family:"Instrument Serif",Georgia,serif;font-style:italic;font-weight:400;font-size:clamp(40px,6vw,64px);letter-spacing:-.02em;line-height:1;margin:0 0 10px}
@@ -213,6 +279,7 @@ footer .mark{margin:30px 0 -.12em;text-align:center;font-family:"Instrument Seri
  footer .top{grid-template-columns:1fr 1fr}
  section{padding:84px 0}.faq summary{font-size:22px}
  footer{padding-bottom:70px}
+ .compare,.two,.split,.types,.cases{grid-template-columns:1fr}.proofn{grid-template-columns:repeat(2,1fr);gap:28px 12px}.form{padding:26px 20px}.form .g{grid-template-columns:1fr}.strip span{font-size:24px}.split{gap:32px}
  #cta{padding-top:120px;min-height:80svh}#cta .planet{width:300vw;top:40%}
 }
 </style>
@@ -222,15 +289,15 @@ footer .mark{margin:30px 0 -.12em;text-align:center;font-family:"Instrument Seri
 <div class="grain" aria-hidden="true"></div>
 <nav class="nav">
  <a class="logo" href="./"><img src="assets/icon-192.png" alt="">Influvia</a>
- <div class="pill"><a href="#uygulama">Uygulama</a><a href="#nasil">Nasıl çalışır</a><a href="#ekranlar">Ekranlar</a><a href="#kimler">Kimler için</a><a href="#sss">SSS</a></div>
+ <div class="pill"><a href="#uygulama">Uygulama</a><a href="#nasil">Nasıl çalışır</a><a href="#ekranlar">Ekranlar</a><a href="markalar/">Markalar</a><a href="#sss">SSS</a></div>
  <div class="right"><a class="btn white" href="https://play.google.com/store/apps/details?id=com.moonnect.app">Google Play <svg viewBox="0 0 16 16" fill="none" aria-hidden="true"><path d="M3 8h9M8.5 4l4 4-4 4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></a></div>
 </nav>
-<div class="bnav"><a href="#uygulama">Uygulama</a><a href="#nasil">Nasıl çalışır</a><a href="#ekranlar">Ekranlar</a><a href="https://play.google.com/store/apps/details?id=com.moonnect.app">İndir</a></div>
+<div class="bnav"><a href="#uygulama">Uygulama</a><a href="#nasil">Nasıl çalışır</a><a href="markalar/">Markalar</a><a href="https://play.google.com/store/apps/details?id=com.moonnect.app">İndir</a></div>
 <main class="doc"><h1>Sayfa bulunamadı</h1><p><a href="./">Ana sayfaya dön</a></p></main>
 <footer><div class="wrap">
  <div class="top">
   <div><a class="logo" href="./"><img src="assets/icon-192.png" alt="">Influvia</a><p class="tag">İçerik üreticileri için kampanya, teslim, ödeme ve performans — tek uygulamada.</p></div>
-  <div><h4>Keşfet</h4><ul><li><a href="#uygulama">Uygulama</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="#kimler">Markalar için</a></li><li><a href="https://play.google.com/store/apps/details?id=com.moonnect.app">Google Play</a></li></ul></div>
+  <div><h4>Keşfet</h4><ul><li><a href="#uygulama">Uygulama</a></li><li><a href="#nasil">Nasıl çalışır</a></li><li><a href="markalar/">Markalar için</a></li><li><a href="https://play.google.com/store/apps/details?id=com.moonnect.app">Google Play</a></li></ul></div>
   <div><h4>Şirket</h4><ul><li><a href="https://moonnect.com">Moonnect</a></li><li><a href="destek/">Destek</a></li><li><a href="mailto:destek@moonnect.com">destek@moonnect.com</a></li></ul></div>
   <div><h4>Yasal</h4><ul><li><a href="gizlilik/">Gizlilik Politikası</a></li><li><a href="kullanim-kosullari/">Kullanım Koşulları</a></li><li><a href="hesap-silme/">Hesap ve Veri Silme</a></li></ul></div>
  </div>
