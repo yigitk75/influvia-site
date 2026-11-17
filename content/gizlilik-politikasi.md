@@ -1,6 +1,6 @@
 # Influvia Gizlilik Politikası
 
-**Son güncelleme:** 29 Eylül 2026
+**Son güncelleme:** 17 Kasım 2026
 **Veri sorumlusu:** Moonnect Digital, LLC — 30 N. Gould St., Sheridan, WY 82801, ABD (İstanbul, Türkiye'de de faaliyet göstermektedir)
 **İletişim:** destek@moonnect.com · influvia.io
 
@@ -19,6 +19,8 @@ Influvia, içerik üreticilerini (talent) markaların kampanyalarıyla buluştur
 **Ödeme hesabı bilgileri.** Para ödülü alabilmek için banka hesabı ve IBAN bilgilerini girebilirsin. Bu bilgiler yalnızca sana yapılacak ödemeleri kolaylaştırmak için tutulur ve isteğe bağlıdır.
 
 **İçerik analizi.** Galerinden seçtiğin bir fotoğraf veya videoyu yapay zekâ destekli içerik analizi için gönderebilirsin. Galeriye yalnızca senin seçtiğin dosya için, cihazının kendi seçici ekranı üzerinden erişilir; kamera veya mikrofona erişmeyiz. Gönderdiğin dosya ve analiz sonucu hesabına bağlı olarak saklanır.
+
+**Kampanya videoları (UGC ve taslaklar).** Bir UGC görevine ya da paylaşım öncesi taslak onayı isteyen bir kampanyaya kabul edildiğinde, uygulamadan yüklediğin videolar hesabına bağlı olarak saklanır ve Moonnect ekibi tarafından incelenir. Taslak videolar yalnızca onay süreci için kullanılır. Onaylanan UGC videoları, kampanya brifinde belirtilen kullanım amacıyla ilgili markaya teslim edilir.
 
 **Uygulama içi etkinlik.** Hedeflerin ve görevlerin, akademi ilerlemen, destek mesajların, bildirimlerin ve bildirim gönderebilmemiz için cihazının anlık bildirim token'ı (Expo / Firebase Cloud Messaging) saklanır.
 
@@ -40,7 +42,7 @@ Verilerini öncelikle seninle aramızdaki kullanım sözleşmesini yerine getirm
 
 ## 5. Verilerini kimlerle paylaşıyoruz?
 
-Verilerin hizmeti sunabilmemiz için gerekli olan veri işleyicilerle paylaşılır: veritabanı, kimlik doğrulama ve dosya depolama için Supabase; uygulama derleme ve anlık bildirim altyapısı için Expo; Android bildirimleri için Firebase Cloud Messaging (Google); Instagram bağlantısı için Meta Platforms; içerik analizi için gönderdiğin dosyanın işlendiği yapay zekâ servis sağlayıcısı. Bu sağlayıcılar verilerini yalnızca bizim talimatımızla ve hizmeti sunmak için işler.
+Verilerin hizmeti sunabilmemiz için gerekli olan veri işleyicilerle paylaşılır: veritabanı, kimlik doğrulama ve dosya depolama için Supabase; uygulama derleme ve anlık bildirim altyapısı için Expo; Android bildirimleri için Firebase Cloud Messaging (Google); Instagram bağlantısı için Meta Platforms; içerik analizi için gönderdiğin dosyanın işlendiği yapay zekâ servis sağlayıcısı. Bu sağlayıcılar verilerini yalnızca bizim talimatımızla ve hizmeti sunmak için işler. Bunlara ek olarak, bir UGC görevinde onaylanan videon, başvurduğun kampanyanın markasıyla paylaşılır.
 
 Bir kampanyaya başvurduğunda profilin, Instagram istatistiklerin ve gönderdiğin içerik bağlantısı ilgili markayla paylaşılır; bu, hizmetin doğası gereğidir. Kişisel verilerini hiçbir koşulda satmayız ve reklam amaçlı üçüncü taraflarla paylaşmayız. Yasal bir zorunluluk veya yetkili bir makamın talebi hâlinde gerekli verileri paylaşabiliriz.
 

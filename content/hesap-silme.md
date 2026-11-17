@@ -2,7 +2,7 @@
 
 **Uygulama:** Influvia (Moonnect Digital, LLC)
 **İletişim:** destek@moonnect.com · influvia.io
-**Son güncelleme:** 29 Eylül 2026
+**Son güncelleme:** 17 Kasım 2026
 
 Influvia hesabını ve hesabına bağlı verileri istediğin zaman, gerekçe göstermeden silebilirsin. Bu sayfada iki yolu ve silme işleminin neleri kapsadığını açıklıyoruz.
 
@@ -29,7 +29,8 @@ Silme işlemiyle birlikte aşağıdaki veriler kalıcı olarak kaldırılır:
 - Kampanya başvuruların ve gönderdiğin içerik bağlantıları
 - Instagram bağlantın, erişim token'ın, istatistiklerin ve kitle demografilerin
 - Influvia Skoru için tutulan günlük takipçi ve görüntülenme anlık görüntüleri
-- Yapay zekâ içerik analizi kayıtların
+- Yapay zekâ içerik analizi kayıtların ve analiz için yüklediğin dosyalar
+- Kampanyalar için yüklediğin taslak ve UGC videoları (depodaki kopyalar en geç 30 gün içinde silinir)
 - Hedeflerin, görevlerin, akademi ilerlemen ve destek mesajların
 - Bildirimlerin ve anlık bildirim (push) token'ların
 - Ödeme hesabı ve IBAN bilgilerin
@@ -39,7 +40,7 @@ Instagram hesabını Influvia'dan bağımsız olarak da yönetebilirsin: Instagr
 
 ## Neler saklanabilir ve ne kadar süreyle?
 
-Yalnızca yasal veya muhasebesel yükümlülüklerimiz gereği saklamak zorunda olduğumuz kayıtlar silme işleminin dışında tutulur. Bunlar, tamamlanmış ve ödemesi yapılmış kampanyalara ait ödeme ve işlem kayıtlarıdır. Bu kayıtlar ilgili vergi ve ticaret mevzuatının öngördüğü yasal saklama süresi boyunca tutulur; mümkün olan her durumda kimliğinle ilişkilendirilemeyecek şekilde anonimleştirilir ve süre sonunda silinir. Bu kayıtlar dışında hiçbir verin saklanmaz.
+Yalnızca yasal veya muhasebesel yükümlülüklerimiz gereği saklamak zorunda olduğumuz kayıtlar silme işleminin dışında tutulur. Bunlar, tamamlanmış ve ödemesi yapılmış kampanyalara ait ödeme ve işlem kayıtlarıdır. Bu kayıtlar ilgili vergi ve ticaret mevzuatının öngördüğü yasal saklama süresi boyunca tutulur; mümkün olan her durumda kimliğinle ilişkilendirilemeyecek şekilde anonimleştirilir ve süre sonunda silinir. Ayrıca onaylanıp markaya teslim edilmiş UGC videoları, kampanya koşulları kapsamında ilgili markada kalmaya devam edebilir; bizim depomuzdaki kopya silinir. Bunlar dışında hiçbir verin saklanmaz.
 
 ## Sorular
 
